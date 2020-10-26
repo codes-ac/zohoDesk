@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+
+
+    <section class="ftco-section bg-info">
+        <div class="container bg-white">
+            <div class="row align-items-center mb-5">
+                <div class="col-lg-8 mb-4 mb-lg-0">
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <h2 class="text-dark font-weight-bold" >{{ d.subject }}</h2>
+                            <div>
+                                <span class="ml-0 mr-2 mb-2"><span
+                                        class="icon-briefcase mr-2"></span>{{ d.createdTime }}</span>
+                                <span class="m-2"><span class="icon-room mr-2"></span>{{ d.email }}</span>
+                                <!-- <span class="m-2"><span class="icon-clock-o mr-2"></span><span
+                                        class="text-primary"> {{ q.employment_status }} -->
+                      </span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="row">
+
+            
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="mb-5">
+                        <h3 class="h5 d-flex align-items-center mb-4 text-primary"><span
+                                class="icon-align-left mr-3"></span>
+                            Description</h3>
+                        <p>{{ d.description }}</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="bg-light p-3 border rounded mb-4">
+                        <h3 class="text-primary  mt-3 h5 pl-3 mb-3 ">Properties</h3>
+                        <ul class="list-unstyled pl-3 mb-0">
+                            <li class="mb-2"><strong class="text-black">Ticket Id:</strong> #{{ d.ticketNumber }}</li>
+                            <li class="mb-2"><strong class="text-black">Created
+                                on:</strong> {{ d.createdTime }}
+                            </li>
+                            <li class="mb-2"><strong class="text-black">
+                                Status:</strong> {{ d.status }}</li>
+                            <li class="mb-2"><strong class="text-black">Channel:</strong> {{ d.channel }}</li>
+                            <li class="mb-2"><strong class="text-black">Assigned To:</strong> {{ d.assignee }}</li>
+                            <li class="mb-2"><strong class="text-black">Department:</strong> {{ d.department }}</li>
+                            <li class="mb-2"><strong class="text-black">Category:</strong> {{ d.category }}</li>
+                            <li class="mb-2"><strong class="text-black">Priority:</strong> {{ d.priority }}</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-light p-3 border rounded mb-4">
+                        <h3 class="text-primary  mt-3 h5 pl-3 mb-3 ">Contact Details</h3>
+                        <ul class="list-unstyled pl-3 mb-0">
+                            <li class="mb-2"><strong class="text-black">Name:</strong> {{ d.lastName }}</li>
+                            <li class="mb-2"><strong class="text-black">Email:</strong> {{ d.email }}</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock content %}

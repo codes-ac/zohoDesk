@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="ftco-section bg-info">
+			<div class="container">
+				<div class="row justify-content-center mb-5 pb-3">
+          <div class="col-md-7 heading-section text-center ftco-animate">
+            <h2 class="mb-4"><span>Jobs Applied By</span> {{name}} </h2>
+          </div>
+        </div>
+          {% for q in query %}
+				<div class="row">
+            <div class="col-md-12 col-lg-12 ftco-animate">
+
+              <div class="job-post-item bg-white p-4 d-block d-md-flex align-items-center">
+
+                <div class="mb-4 mb-md-0 mr-5">
+                  <div class="job-post-item-header d-flex align-items-center">
+                    <h6>For</h6>
+                    <h2 class="mr-3 text-black h3 mx-2" > {{q.applied_for}} </h2>
+                  </div>
+                  <div class="job-post-item-body d-block d-md-flex">
+                    <div class="mr-3"><span class="icon-layers"></span> <a href="#"> {{q.company_name}}</a></div>
+                  </div>
+                </div>
+
+                <div class="ml-auto d-flex">
+                  <button disabled  class="btn btn-secondary py-2 mr-1">Applied</button> 
+                  <a href="#" class="btn btn-secondary rounded-circle btn-favorite d-flex align-items-center icon">
+                    <span class="icon-done"></span>
+                  </a>
+                </div>
+
+            </div>
+          {% endfor %}
+        </div>
+			</div>
+</section>
+
+{% endblock content %}

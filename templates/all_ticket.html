@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="ftco-section bg-info">
+			<div class="container">
+				<div class="row justify-content-center mb-5 pb-3">
+          <div class="col-md-7 heading-section text-center ftco-animate">
+            <h2 class="mb-4">All Tickets</h2>
+          </div>
+        </div>
+          {% for d in data %}
+				<div class="row">
+            <div class="col-md-12 col-lg-12 ftco-animate">
+
+              <div class="job-post-item bg-white p-4 d-block d-md-flex align-items-center">
+
+                <div class="mb-4 mb-md-0 mr-5">
+                  <div class="job-post-item-header d-flex align-items-center">
+                    <h2 class="mr-3 text-black h3" >{{d.subject}} </h2>
+                    <div class="badge-wrap">
+                    {% if d.status == 'Closed' %}
+                    <span class="bg-danger text-white badge py-2 px-3">Closed</span>
+                    {% else %}
+                    <span class="bg-info text-white badge py-2 px-3">Open</span>
+                    {% endif %}
+                    </div>
+                  </div>
+                  <div class="job-post-item-body d-block d-md-flex">
+                    <div class="mr-3"><span class="icon-layers"></span> {{d.createdTime}}</div>
+                    <div><span class="icon-my_location"></span> <span>{{d.email}}</span></div>
+                  </div>
+                  <div class="container">
+                    <span><h4> {{d.department}} </h4></span>
+                  </div>
+                </div>
+
+                <div class="ml-auto d-flex">
+                  <a href="{% url 'single_ticket' d.id %}" class="btn btn-primary py-2 mr-1">View Ticket</a>
+                   <h4><a href=" {% url 'update_ticket' d.id %} " class="icon-edit">Edit</a></h4>
+                  </a>
+                </div>
+
+            </div>
+          {% endfor %}
+        </div>
+			</div>
+</section>
+
+{% endblock content %}

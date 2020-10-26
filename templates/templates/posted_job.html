@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="ftco-section bg-info">
+			<div class="container">
+				<div class="row justify-content-center mb-5 pb-3">
+          <div class="col-md-7 heading-section text-center ftco-animate">
+            <h2 class="mb-4"><span>Jobs Posted By </span> {{company}} </h2>
+          </div>
+        </div>
+          {% for q in query %}
+				<div class="row">
+            <div class="col-md-12 col-lg-12 ftco-animate">
+
+              <div class="job-post-item bg-white p-4 d-block d-md-flex align-items-center">
+
+                <div class="mb-4 mb-md-0 mr-5">
+                  <div class="job-post-item-header d-flex align-items-center">
+                    <h2 class="mr-3 text-black h3" ><a href=" {% url 'job-single' q.id %} " style="color:black" > {{q.title}} </a></h2>
+                    <div class="badge-wrap">
+                    {% if q.employment_status == 'Part Time' %}
+                    <span class="bg-danger text-white badge py-2 px-3">Partime</span>
+                    {% elif q.employment_status == 'Full Time' %}
+                    <span class="bg-info text-white badge py-2 px-3">Fulltime</span>
+                    {% else %}
+                    <span class="bg-success text-white badge py-2 px-3">Freelancer</span>
+                    {% endif %}
+                    </div>
+                  </div>
+                  <div class="job-post-item-body d-block d-md-flex">
+                    <div class="mr-3"><span class="icon-layers"></span> <a href="#">{{q.company_name}}</a></div>
+                    <div><span class="icon-my_location"></span> <span>{{q.job_location}}</span></div>
+                  </div>
+                </div>
+
+                <div class="ml-auto d-flex">
+                  <a href="{% url 'apply' q.id %}" class="btn btn-primary py-2 mr-1">Apply Job</a>
+                  <a href="{% url 'delete' q.id %}" class="btn btn-secondary rounded-circle btn-favorite d-flex align-items-center icon">
+                    <span class="icon-delete"></span>
+                  </a>
+                </div>
+
+            </div>
+          {% endfor %}
+        </div>
+			</div>
+</section>
+
+{% endblock content %}
